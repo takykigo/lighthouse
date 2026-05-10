@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>メルマガ受信トラブル解析レポート</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm;
+            background-color: #f4f7f9;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f9;
+        }
+        .container {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            font-size: 22pt;
+        }
+        h2 {
+            color: #2980b9;
+            border-left: 5px solid #3498db;
+            padding-left: 10px;
+            margin-top: 30px;
+            font-size: 16pt;
+        }
+        .summary-box {
+            background-color: #e8f4fd;
+            border: 1px solid #3498db;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #dcdde1;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .flow-container {
+            border: 1px dashed #7f8c8d;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #fff;
+        }
+        .step {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #f1f2f6;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .footer-note {
+            font-size: 9pt;
+            color: #7f8c8d;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10pt;
+            color: white;
+        }
+        .badge-ok { background-color: #2ecc71; }
+        .badge-ng { background-color: #e74c3c; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>メルマガ受信トラブル解析レポート</h1>
+        
+        <div class="summary-box">
+            <strong>【事象の要約】</strong><br>
+            登録完了メールは届いたが、肝心の先行販売メールが「迷惑メール」に入ってしまった。これは送信アドレスの違いと、受信側AIによる一斉配信メールへの自動警戒が原因です。
+        </div>
+
+        <h2>1. 送信ドメインとアドレスの比較</h2>
+        <p>同じ「てるてる亭」からの送信でも、AIはアドレスごとに信頼度を判定しています。</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>項目</th>
+                    <th>① 登録完了メール</th>
+                    <th>② 先行販売メール</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>アドレス</strong></td>
+                    <td>touroku@teruteru-tei.jp</td>
+                    <td>merumaga@teruteru-tei.jp</td>
+                </tr>
+                <tr>
+                    <td><strong>主な用途</strong></td>
+                    <td>システムによる自動応答</td>
+                    <td>会員への一斉告知・宣伝</td>
+                </tr>
+                <tr>
+                    <td><strong>AIの判定</strong></td>
+                    <td><span class="badge badge-ok">安全（個別通知）</span></td>
+                    <td><span class="badge badge-ng">警戒（大量広告）</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>2. なぜAIは「迷惑メール」としたのか？</h2>
+        <div class="flow-container">
+            <div class="step">検問1：アドレス名に「merumaga」が含まれている</div>
+            <p>AIはアドレスの文字列から「これは広告配信用だ」と予測し、フィルタリングの強度を上げます。</p>
+            
+            <div class="step">検問2：メール本文の性質（URLとキーワード）</div>
+            <p>「先行」「限定」などのキーワードや、販売ページへのURLが多いと、典型的な宣伝メールとみなされます。</p>
+            
+            <div class="step">検問3：送信ルート（サーバー）の信頼性</div>
+            <p>メルマガ用の一斉配信サーバーは、世界中のAIから厳しく監視されており、判定が厳しくなりがちです。</p>
+        </div>
+
+        <h2>3. 今後の再発防止アクション</h2>
+        <p>AIの誤解を解き、次回から確実に受信箱へ届けるための「AI教育」の手順です。</p>
+        <ul>
+            <li><strong>「迷惑メールではない」を報告：</strong> 現在フォルダにあるメールを開き、ボタンを押す。これが最も強力な学習になります。</li>
+            <li><strong>連絡先（アドレス帳）への登録：</strong> <span class="highlight">merumaga@teruteru-tei.jp</span> を登録すると、AIはその相手を「ホワイトリスト（信頼できる相手）」に入れます。</li>
+            <li><strong>メールの開封とリンククリック：</strong> 届いたメールに反応を示すことで、AIは「このユーザーに必要な情報だ」と認識します。</li>
+        </ul>
+
+        <div class="footer-note">
+            ※本レポートはAIによる自動判定の一般的な仕組みに基づいて作成されています。
+        </div>
+    </div>
+</body>
+</html>
