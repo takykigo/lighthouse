@@ -2,162 +2,232 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>メルマガ受信トラブル解析レポート</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メルマガ受信トラブル解析</title>
     <style>
-        @page {
-            size: A4;
-            margin: 15mm;
-            background-color: #f4f7f9;
-        }
-        body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            line-height: 1.6;
-            color: #333;
+        /* Base Reset */
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #f4f7f9;
         }
-        .container {
-            width: 100%;
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-sizing: border-box;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 12px;
+        }
+
+        /* Container */
+        .wrapper {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 20px 0;
         }
         h1 {
-            color: #2c3e50;
-            text-align: center;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            font-size: 22pt;
+            font-size: 1.25rem;
+            color: #1a73e8;
+            letter-spacing: -0.5px;
         }
-        h2 {
-            color: #2980b9;
-            border-left: 5px solid #3498db;
-            padding-left: 10px;
-            margin-top: 30px;
-            font-size: 16pt;
-        }
-        .summary-box {
-            background-color: #e8f4fd;
-            border: 1px solid #3498db;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #dcdde1;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #3498db;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        .flow-container {
-            border: 1px dashed #7f8c8d;
+
+        /* Summary Card */
+        .card {
+            background: #fff;
+            border-radius: 16px;
             padding: 20px;
-            margin: 20px 0;
-            background-color: #fff;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-        .step {
+        .summary-text {
+            font-size: 0.95rem;
+            color: #444;
+        }
+        .summary-highlight {
+            color: #1a73e8;
+            font-weight: bold;
+        }
+
+        /* Comparison Section */
+        h2 {
+            font-size: 1rem;
+            margin: 24px 0 12px 8px;
+            color: #5f6368;
+            display: flex;
+            align-items: center;
+        }
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 16px;
+            background: #1a73e8;
+            margin-right: 8px;
+            border-radius: 2px;
+        }
+
+        .comparison {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .mail-type {
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+            position: relative;
+        }
+        .type-label {
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 4px;
             display: block;
-            margin-bottom: 10px;
-            padding: 10px;
-            background: #f1f2f6;
-            border-radius: 4px;
-            font-weight: bold;
         }
-        .highlight {
-            color: #e74c3c;
-            font-weight: bold;
-        }
-        .footer-note {
-            font-size: 9pt;
-            color: #7f8c8d;
-            text-align: center;
-            margin-top: 40px;
+        .mail-address {
+            font-family: monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+            display: block;
+            margin-bottom: 8px;
         }
         .badge {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 20px;
             display: inline-block;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 10pt;
-            color: white;
         }
-        .badge-ok { background-color: #2ecc71; }
-        .badge-ng { background-color: #e74c3c; }
+        
+        .safe { background-color: #e6f4ea; border-left: 4px solid #34a853; }
+        .safe .type-label { color: #188038; }
+        .safe .badge { background: #34a853; color: white; }
+
+        .warning { background-color: #fce8e6; border-left: 4px solid #d93025; }
+        .warning .type-label { color: #a50e0e; }
+        .warning .badge { background: #d93025; color: white; }
+
+        /* Reason Section */
+        .reason-box {
+            background: #fff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        .reason-title {
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            display: block;
+        }
+        .reason-desc {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        /* Action Section */
+        .action-card {
+            background: #e8f0fe;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .action-icon {
+            font-size: 1.2rem;
+            margin-right: 12px;
+            margin-top: 2px;
+        }
+        .action-text b {
+            color: #1a73e8;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .action-text p {
+            font-size: 0.85rem;
+            color: #444;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #9aa0a6;
+            margin: 30px 0;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>メルマガ受信トラブル解析レポート</h1>
-        
-        <div class="summary-box">
-            <strong>【事象の要約】</strong><br>
-            登録完了メールは届いたが、肝心の先行販売メールが「迷惑メール」に入ってしまった。これは送信アドレスの違いと、受信側AIによる一斉配信メールへの自動警戒が原因です。
+    <div class="wrapper">
+        <header>
+            <h1>メルマガ受信トラブル解析</h1>
+        </header>
+
+        <div class="card">
+            <p class="summary-text">
+                登録確認は届くのに先行販売が届かないのは、<span class="summary-highlight">送信アドレスの違い</span>と、AIによる<span class="summary-highlight">一斉配信への自動警戒</span>が原因です。
+            </p>
         </div>
 
-        <h2>1. 送信ドメインとアドレスの比較</h2>
-        <p>同じ「てるてる亭」からの送信でも、AIはアドレスごとに信頼度を判定しています。</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>項目</th>
-                    <th>① 登録完了メール</th>
-                    <th>② 先行販売メール</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>アドレス</strong></td>
-                    <td>touroku@teruteru-tei.jp</td>
-                    <td>merumaga@teruteru-tei.jp</td>
-                </tr>
-                <tr>
-                    <td><strong>主な用途</strong></td>
-                    <td>システムによる自動応答</td>
-                    <td>会員への一斉告知・宣伝</td>
-                </tr>
-                <tr>
-                    <td><strong>AIの判定</strong></td>
-                    <td><span class="badge badge-ok">安全（個別通知）</span></td>
-                    <td><span class="badge badge-ng">警戒（大量広告）</span></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>2. なぜAIは「迷惑メール」としたのか？</h2>
-        <div class="flow-container">
-            <div class="step">検問1：アドレス名に「merumaga」が含まれている</div>
-            <p>AIはアドレスの文字列から「これは広告配信用だ」と予測し、フィルタリングの強度を上げます。</p>
-            
-            <div class="step">検問2：メール本文の性質（URLとキーワード）</div>
-            <p>「先行」「限定」などのキーワードや、販売ページへのURLが多いと、典型的な宣伝メールとみなされます。</p>
-            
-            <div class="step">検問3：送信ルート（サーバー）の信頼性</div>
-            <p>メルマガ用の一斉配信サーバーは、世界中のAIから厳しく監視されており、判定が厳しくなりがちです。</p>
+        <h2>判定が分かれた理由</h2>
+        <div class="comparison">
+            <div class="mail-type safe">
+                <span class="type-label">① 登録完了（届く）</span>
+                <span class="mail-address">touroku@teruteru-tei.jp</span>
+                <span class="badge">判定：安全（事務連絡）</span>
+            </div>
+            <div class="mail-type warning">
+                <span class="type-label">② 先行販売（迷惑箱）</span>
+                <span class="mail-address">merumaga@teruteru-tei.jp</span>
+                <span class="badge">判定：警戒（大量宣伝）</span>
+            </div>
         </div>
 
-        <h2>3. 今後の再発防止アクション</h2>
-        <p>AIの誤解を解き、次回から確実に受信箱へ届けるための「AI教育」の手順です。</p>
-        <ul>
-            <li><strong>「迷惑メールではない」を報告：</strong> 現在フォルダにあるメールを開き、ボタンを押す。これが最も強力な学習になります。</li>
-            <li><strong>連絡先（アドレス帳）への登録：</strong> <span class="highlight">merumaga@teruteru-tei.jp</span> を登録すると、AIはその相手を「ホワイトリスト（信頼できる相手）」に入れます。</li>
-            <li><strong>メールの開封とリンククリック：</strong> 届いたメールに反応を示すことで、AIは「このユーザーに必要な情報だ」と認識します。</li>
-        </ul>
-
-        <div class="footer-note">
-            ※本レポートはAIによる自動判定の一般的な仕組みに基づいて作成されています。
+        <h2>AIが拒絶した3つのチェック</h2>
+        <div class="reason-box">
+            <span class="reason-title">1. アドレス名「merumaga」</span>
+            <p class="reason-desc">広告配信用と推測され、フィルタリング強度が上がりました。</p>
         </div>
+        <div class="reason-box">
+            <span class="reason-title">2. 宣伝キーワードとURL</span>
+            <p class="reason-desc">「限定」「販売」などの語句とURLの組み合わせが広告スパムと合致しました。</p>
+        </div>
+        <div class="reason-box">
+            <span class="reason-title">3. 送信ルートの性質</span>
+            <p class="reason-desc">一斉配信専用サーバーからの送信は、AIが最も厳しく監視するルートです。</p>
+        </div>
+
+        <h2>確実に見つけるための対策</h2>
+        <div class="action-card">
+            <span class="action-icon">✅</span>
+            <div class="action-text">
+                <b>「迷惑メールでない」を報告</b>
+                <p>現在のメールを救出することで、AIが「必要なもの」と学習します。</p>
+            </div>
+        </div>
+        <div class="action-card">
+            <span class="action-icon">📱</span>
+            <div class="action-text">
+                <b>連絡先に追加する</b>
+                <p>merumaga@... を連絡先に登録すると、VIP（信頼枠）に入ります。</p>
+            </div>
+        </div>
+        <div class="action-card">
+            <span class="action-icon">🖱️</span>
+            <div class="action-text">
+                <b>一度リンクをクリック</b>
+                <p>開封して反応を示すことが、次回のブロックを防ぐ最強の対策です。</p>
+            </div>
+        </div>
+
+        <footer>
+            AI解析アルゴリズムに基づく受信トラブルレポート
+        </footer>
     </div>
 </body>
 </html>
