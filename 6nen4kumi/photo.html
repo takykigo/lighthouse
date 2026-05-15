@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm 12mm;
+            background-color: #ffffff;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        h1 { margin: 0; font-size: 18pt; }
+        h2 { color: #2c3e50; border-left: 5px solid #e67e22; padding-left: 10px; font-size: 14pt; margin-top: 25px; }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            table-layout: fixed;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            font-size: 10pt;
+            vertical-align: top;
+            word-wrap: break-word;
+        }
+        th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+            width: 25%;
+        }
+        .highlight {
+            color: #d35400;
+            font-weight: bold;
+        }
+        .section-box {
+            background-color: #fdfaf5;
+            border: 1px solid #f39c12;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .app-info {
+            display: table;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .app-card {
+            display: table-cell;
+            width: 50%;
+            padding: 10px;
+            border: 1px solid #eee;
+            background: white;
+        }
+        .important {
+            color: #c0392b;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>LINE写真プリント比較ガイド</h1>
+        <p>恩師への贈り物に最適な印刷方法の選び方</p>
+    </div>
+
+    <h2>1. 徹底比較表（キタムラ vs コンビニ）</h2>
+    <table>
+        <tr>
+            <th>比較項目</th>
+            <th>カメラのキタムラ</th>
+            <th>コンビニ（セブン等）</th>
+        </tr>
+        <tr>
+            <td><strong>仕上がり</strong></td>
+            <td><span class="highlight">銀塩プリント（高品質）</span><br>写真屋さんの本物の質感。</td>
+            <td>昇華型熱転写（標準）<br>表面がツルツルした簡易印刷。</td>
+        </tr>
+        <tr>
+            <td><strong>耐久性</strong></td>
+            <td><span class="highlight">約100年（一生もの）</span><br>色褪せに非常に強く、長期保管向け。</td>
+            <td>数年〜10数年程度<br>日光や空気に触れると色が退色しやすい。</td>
+        </tr>
+        <tr>
+            <td><strong>データの渡し方</strong></td>
+            <td>アプリ予約・ケーブル接続・Wi-Fi<br><span class="important">★店員さんのサポートあり</span></td>
+            <td>専用アプリから予約番号を発行<br>全てセルフ操作。</td>
+        </tr>
+        <tr>
+            <td><strong>料金（L判）</strong></td>
+            <td>1枚 50円〜60円前後</td>
+            <td>1枚 30円〜40円</td>
+        </tr>
+        <tr>
+            <td><strong>アプリ名</strong></td>
+            <td>「プリント直行便」</td>
+            <td>「セブン-イレブン マルチコピー」等</td>
+        </tr>
+    </table>
+
+    <h2>2. 印刷の仕順とデータの準備</h2>
+    <div class="section-box">
+        <p><strong>Step 1: LINEからスマホに保存（必須）</strong><br>
+        アルバムを開き、保存したい写真を選択して「保存（↓）」をタップ。端末の「写真（ギャラリー）」で見れる状態にします。</p>
+        <p><strong>Step 2: 写真の整理</strong><br>
+        印刷したい写真に「お気に入り（ハート）」をつけておくと、店頭の機械で探すのが一瞬で終わります。</p>
+        <p><strong>Step 3: お店で注文</strong><br>
+        キタムラなら店員さんに「LINEをプリントしたい」と伝えるのが最も早いです。</p>
+    </div>
+
+    <h2>3. 恩師へ渡す際のチェックポイント</h2>
+    <ul>
+        <li><span class="important">サイズは「L判」がベスト：</span> LINEの写真は拡大するとボケやすいため、一般的な写真サイズが一番綺麗です。</li>
+        <li><span class="important">明るさ補正：</span> 印刷は画面より暗く出がちです。スマホで少し明るく補正しておくと表情が明るく見えます。</li>
+        <li><span class="important">日付について：</span> LINEデータは日付情報が消えるため、無理に入れず、裏に手書きで添えるのが温かみが出てお勧めです。</li>
+    </ul>
+
+    <div style="text-align: center; font-size: 9pt; color: #7f8c8d; margin-top: 30px;">
+        作成：LINE写真プリント案内ガイド
+    </div>
+</body>
+</html>
