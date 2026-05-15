@@ -4,115 +4,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        @page {
+            size: A4;
+            margin: 10mm;
+            background-color: #fcfcfc;
+        }
         body {
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            line-height: 1.5;
             color: #333;
-            background-color: #f4f7f6;
-            padding: 15px;
             margin: 0;
-            font-size: 18px; /* 文字を大きく設定 */
+            padding: 0;
+            background-color: #fcfcfc;
         }
         .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 15px;
         }
-        h1 {
-            font-size: 24px;
-            color: #2c3e50;
+        .title {
+            background-color: #444;
+            color: white;
+            padding: 20px 15px;
             text-align: center;
-            border-bottom: 3px solid #e67e22;
-            padding-bottom: 10px;
+            font-size: 24pt;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 10px;
         }
         h2 {
-            font-size: 20px;
-            background: #2c3e50;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
+            font-size: 20pt;
+            border-left: 8px solid #666;
+            padding-left: 12px;
             margin-top: 30px;
+            color: #1a1a1a;
         }
-        table {
+        .comparison-card {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .card-header {
+            font-size: 22pt;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #ccc;
+        }
+        .kitamura { color: #d32f2f; }
+        .convenience { color: #1976d2; }
+        
+        .point-label {
+            display: inline-block;
+            background: #eee;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16pt;
+            margin-top: 10px;
+        }
+        .point-text {
+            font-size: 18pt;
+            margin: 5px 0 15px 0;
+        }
+        .summary-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 16px;
+            margin-top: 20px;
+            font-size: 16pt;
         }
-        th, td {
-            border: 1px solid #ddd;
+        .summary-table th, .summary-table td {
+            border: 2px solid #ccc;
             padding: 12px;
-            text-align: left;
+            text-align: center;
         }
-        th {
-            background-color: #f8f9fa;
-            width: 35%;
-        }
-        .highlight {
-            color: #e67e22;
-            font-weight: bold;
-        }
-        .important-box {
-            background-color: #fff9c4;
-            border: 2px solid #fbc02d;
+        .summary-table th { background: #f0f0f0; }
+
+        .footer-note {
+            background: #fff9c4;
             padding: 15px;
             border-radius: 10px;
-            margin: 20px 0;
+            font-size: 17pt;
+            margin-top: 20px;
+            border: 1px solid #fbc02d;
         }
-        .step {
-            display: inline-block;
-            background: #e67e22;
-            color: white;
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-weight: bold;
-            margin-right: 5px;
-        }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
     </style>
 </head>
 <body>
+    <div class="container">
+        <div class="title">写真プリント 比較ガイド</div>
 
-<div class="container">
-    <h1>写真プリント比較ガイド</h1>
+        <div class="comparison-card">
+            <div class="card-header kitamura">カメラのキタムラ</div>
+            <div class="point-label">メリット</div>
+            <div class="point-text">・写真屋さんの「銀塩プリント」で圧倒的に高画質</div>
+            <div class="point-text">・100年色褪せない耐久性（贈り物に最適）</div>
+            <div class="point-text">・困ったら店員さんにすべて相談できる</div>
+            
+            <div class="point-label">デメリット</div>
+            <div class="point-text">・1枚あたりの価格が少し高い</div>
+            <div class="point-text">・店舗まで行く必要がある（近所にない場合）</div>
+        </div>
 
-    <h2>1. どっちで印刷する？</h2>
-    <table>
-        <tr>
-            <th>仕上がり</th>
-            <td><span class="highlight">キタムラ：一生もの</span><br>コンビニ：標準的</td>
-        </tr>
-        <tr>
-            <th>寿命</th>
-            <td><span class="highlight">キタムラ：100年OK</span><br>コンビニ：数年〜</td>
-        </tr>
-        <tr>
-            <th>料金(L判)</th>
-            <td>キタムラ：約60円<br>コンビニ：約40円</td>
-        </tr>
-        <tr>
-            <th>安心感</th>
-            <td><span class="highlight">キタムラ：店員に聞ける</span><br>コンビニ：全部セルフ</td>
-        </tr>
-    </table>
+        <div class="comparison-card">
+            <div class="card-header convenience">コンビニ印刷</div>
+            <div class="point-label">メリット</div>
+            <div class="point-text">・24時間いつでも、近所で今すぐ印刷できる</div>
+            <div class="point-text">・1枚30〜40円と非常に安価</div>
+            <div class="point-text">・アプリで予約すれば、番号入力だけで終わる</div>
+            
+            <div class="point-label">デメリット</div>
+            <div class="point-text">・数年〜10数年で色が薄くなる可能性がある</div>
+            <div class="point-text">・セルフ操作なので、失敗しても自己責任</div>
+        </div>
 
-    <h2>2. やることリスト</h2>
-    <ul>
-        <li><span class="step">1</span> <strong>LINEから保存</strong><br>アルバムで「保存ボタン(↓)」を必ず押す[cite: 1, 2]</li>
-        <li><span class="step">2</span> <strong>お気に入り登録</strong><br>スマホの写真アプリで「❤️」をつける（探すのが楽になります）</li>
-        <li><span class="step">3</span> <strong>お店へGO</strong><br>キタムラなら「LINEの写真をLサイズで」と言うだけ！</li>
-    </ul>
+        <h2>かんたん比較表</h2>
+        <table class="summary-table">
+            <tr>
+                <th>項目</th>
+                <th>キタムラ</th>
+                <th>コンビニ</th>
+            </tr>
+            <tr>
+                <td><strong>画質</strong></td>
+                <td>最高（プロ）</td>
+                <td>普通（標準）</td>
+            </tr>
+            <tr>
+                <td><strong>価格</strong></td>
+                <td>約60円〜</td>
+                <td>約40円〜</td>
+            </tr>
+            <tr>
+                <td><strong>相談</strong></td>
+                <td>できる</td>
+                <td>できない</td>
+            </tr>
+        </table>
 
-    <div class="important-box">
-        <strong>⚠️ 失敗しないコツ</strong>
-        <ul>
-            <li>サイズは「L判」が一番綺麗！[cite: 1, 2]</li>
-            <li>画面より少しだけ「明るく」補正して印刷！[cite: 1, 2]</li>
-        </ul>
+        <div class="footer-note">
+            <strong>必ずやっておく準備：</strong><br>
+            LINEのアルバムを開き、印刷したい写真をスマホに「保存」してください。これがないとどちらの方法でも印刷できません。
+        </div>
     </div>
-</div>
-
 </body>
 </html>
