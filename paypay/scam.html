@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            /* スマホで文字を大きく表示 */
+            font-size: 18px;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding-bottom: 60px;
+        }
+        .header {
+            background-color: #ff0033; /* PayPay Red */
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 32px; /* スマホで見やすいサイズ */
+            letter-spacing: 1px;
+            line-height: 1.3;
+        }
+        .header p {
+            margin: 15px 0 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .section {
+            padding: 40px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .section-title {
+            color: #ff0033;
+            font-size: 26px;
+            border-left: 10px solid #ff0033;
+            padding-left: 15px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+        .large-text {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .warning-box {
+            background-color: #fff4f4;
+            border: 3px solid #ff0033;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+        .warning-box strong {
+            color: #ff0033;
+            font-size: 22px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .example-card {
+            background-color: #f1f3f5;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        .example-header {
+            font-weight: bold;
+            font-size: 22px;
+            color: #222;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        .example-body {
+            font-size: 19px;
+            color: #444;
+        }
+        .point-box {
+            background-color: #e7f3ff;
+            border-left: 10px solid #007bff;
+            padding: 20px 25px;
+            margin: 25px 0;
+            font-size: 20px;
+        }
+        .point-box strong {
+            font-size: 22px;
+            color: #0056b3;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .no-list {
+            list-style: none;
+            padding: 0;
+        }
+        .no-list li {
+            margin-bottom: 25px;
+            padding-left: 35px;
+            position: relative;
+            font-size: 20px;
+        }
+        .no-list li::before {
+            content: "●";
+            color: #ff0033;
+            position: absolute;
+            left: 0;
+            font-size: 24px;
+        }
+        .step-num {
+            background: #333;
+            color: white;
+            min-width: 35px;
+            height: 35px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 12px;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 18px;
+            color: #666;
+            background-color: #f8f9fa;
+        }
+        /* 太字の強調 */
+        b, strong {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>詐欺警戒アラート</h1>
+            <p>PayPayを悪用した最新送金詐欺の手口</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">巧妙な詐欺の正体</div>
+            <p class="large-text">
+                これまでの詐欺は「偽サイト」へ誘導して情報を盗むものでしたが、現在は<strong>「本物のPayPayアプリ」</strong>を悪用します。
+            </p>
+            <div class="warning-box">
+                <strong>【最大の罠】</strong>
+                メールのリンクを押すと、スマホにインストールされている正規のPayPayアプリが自動で起動し、すでに金額が入力された「送金画面」が表示されます。
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">入り口（きっかけ）の事例集</div>
+            <p class="large-text">詐欺師はあらゆる有名組織をかたって接触してきます。</p>
+
+            <div class="example-card">
+                <div class="example-header"><span class="step-num">1</span>公的機関を装う</div>
+                <div class="example-body">
+                    <strong>「国税庁」「日本年金機構」「地方自治体」</strong><br>
+                    「所得税の未払いがある」「差し押さえ最終予告」といった、恐怖を煽る内容のメールやSMS。
+                </div>
+            </div>
+
+            <div class="example-card">
+                <div class="example-header"><span class="step-num">2</span>PayPay公式を装う</div>
+                <div class="example-body">
+                    <strong>「PayPay運営」「カスタマーセンター」</strong><br>
+                    「アカウントに制限がかかりました」「不正ログインの疑い」「高額ポイントが当選しました」という通知。
+                </div>
+            </div>
+
+            <div class="example-card">
+                <div class="example-header"><span class="step-num">3</span>日常のサービスを装う</div>
+                <div class="example-body">
+                    <strong>「宅配業者(不在通知)」「三井住友カード」「Amazon」</strong><br>
+                    「荷物の再配達料の支払い」「カード利用確認」として、少額の支払いを求める名目でリンクを踏ませる。
+                </div>
+            </div>
+            
+            <div class="example-card">
+                <div class="example-header"><span class="step-num">4</span>SNSでの取引を装う</div>
+                <div class="example-body">
+                    <strong>「X(旧Twitter)」「フリマアプリ」</strong><br>
+                    「ライブチケットの譲渡」「人気商品の格安販売」。支払いをPayPayの「送る」機能で指定し、送金後にブロック。
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">なぜ見抜けないのか？</div>
+            <ul class="no-list">
+                <li><strong>本物のアプリが起動する：</strong> 偽サイトではないため、セキュリティ警告が出にくい。</li>
+                <li><strong>名前が巧妙：</strong> 送金先の相手名が「PayPay納付窓口」や「払い戻しセンター」など、公式のような名前に設定されている。</li>
+                <li><strong>時間の猶予を与えない：</strong> 「本日中」「24時間以内」と期限を切り、冷静な判断を奪う。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">被害を防ぐ絶対のルール</div>
+            <div class="point-box">
+                <strong>1. リンクからは絶対に送金しない</strong>
+                公的機関やPayPay公式が、メールのリンクから「送金機能（青い画面）」で支払いを求めることは絶対にありません。
+            </div>
+            <div class="point-box">
+                <strong>2. 公式アプリを直接開く</strong>
+                メール内のURLは無視し、スマホのホーム画面にあるアイコンからアプリを起動して、お知らせや残高を確認してください。
+            </div>
+            <div class="point-box">
+                <strong>3. 「送る」は個人間のみ</strong>
+                PayPayの「送る」機能は、家族や友人にお金を渡すためのものです。見知らぬ相手や「窓口」宛てに使うものではありません。
+            </div>
+        </div>
+
+        <div class="footer">
+            ご家族や周囲の方にもこの情報を共有し、被害を未然に防ぎましょう。
+        </div>
+    </div>
+</body>
+</html>
