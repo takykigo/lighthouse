@@ -110,7 +110,7 @@
             text-align: center;
         }
         
-        /* 緊急連絡・最重要用の超強調ボックス */
+        /* 【修正】不自然な塗りつぶしを完全廃止し、スッキリ目立つ文字へ */
         .urgency-box {
             background-color: #fff2cc;
             border: 4px dashed #ff9900;
@@ -129,10 +129,12 @@
         }
         .urgency-box .highlight-red {
             color: #ff0033;
-            font-size: 28px;
+            font-size: 24px; /* スマホ画面に収まるようサイズ微調整 */
             font-weight: bold;
-            background: linear-gradient(transparent 60%, #ffcccc 60%);
-            display: inline-block; /* スマホで綺麗に改行させるため */
+            background: none; /* 塗りつぶしの原因だったグラデーションを削除 */
+            border-bottom: 3px solid #ff0033; /* 下線に変更してスッキリと強調 */
+            display: inline;
+            line-height: 1.6;
         }
 
         /* 徹底無視ブロックの超強調 */
@@ -166,7 +168,7 @@
             display: inline-block;
         }
 
-        /* 上限0円ルールの強調表示 */
+        /* 【修正】青文字の塗りつぶしバグも完全修復 */
         .zero-rule-box {
             background-color: #e8f4fd;
             border: 3px solid #007bff;
@@ -186,8 +188,10 @@
             color: #0056b3;
             font-size: 24px;
             font-weight: bold;
-            background: linear-gradient(transparent 60%, #bbdefb 60%);
-            display: inline-block;
+            background: none; /* 塗りつぶしの原因だったグラデーションを削除 */
+            border-bottom: 3px solid #007bff; /* 下線に変更してスマートに */
+            display: inline;
+            line-height: 1.6;
         }
 
         .example-card {
@@ -210,7 +214,7 @@
             color: #444;
         }
         
-        /* 金額の不自然な改行を防ぐためのクラス */
+        /* 金額の不自然な改行を防ぐ */
         .price {
             white-space: nowrap;
             font-weight: bold;
@@ -255,7 +259,6 @@
             background-color: #f8f9fa;
         }
         
-        /* スマホでのテーブル表示の崩れを完全に防ぐスタイル */
         .table-responsive {
             width: 100%;
             overflow-x: auto;
@@ -264,7 +267,7 @@
         }
         table {
             width: 100%;
-            min-width: 600px; /* 横スクロールできるようにして文字の潰れを防ぐ */
+            min-width: 600px;
             border-collapse: collapse;
             font-size: 18px;
         }
@@ -354,7 +357,7 @@
                     <li><strong>機械による自動生成（総当たり）：</strong> 詐欺グループがシステムを使い、電話番号の下4桁などをランダムに自動生成して大量送信。「数打てば当たる」で届いているだけです。</li>
                     <li><strong>偽のSNS企画（フィッシング）：</strong> 「アマギフプレゼント」「副業アンケート」など、現在使われている生きた連絡先を集めるための罠に自ら入力してしまうケース。</li>
                     <li><strong>悪質なアプリ：</strong> 無料ゲーム等を入れた際、「連絡先へのアクセス権」を深く考えずに許可してしまい、スマホ内の登録情報を丸ごと海外サーバーへ抜かれるケース。</li>
-                    <li><strong>ネット上の公開情報：</strong> 仕事用のホームページやSNSのプロフィール欄に載せている連絡先を、自動収集ソフト（スクレイピング）で機械的にかき集められるケース。</li>
+                    <li><strong>ネット上の公開情報：</strong> 工作用のホームページやSNSのプロフィール欄に載せている連絡先を、自動収集ソフト（スクレイピング）で機械的にかき集められるケース。</li>
                 </ul>
 
                 <div class="ignore-box">
@@ -402,11 +405,11 @@
 
                 <div class="urgency-box">
                     <span class="urgency-title">🚨 補償を受けるための絶対条件</span>
-                    <p style="font-size: 20px; margin: 0 0 10px 0; text-align: center;">不正利用が発覚した瞬間、何よりも優先すべき行動：</p>
-                    <p style="text-align: center; margin: 15px 0;">
+                    <p style="font-size: 20px; margin: 0 0 15px 0; text-align: center; line-height: 1.5;">不正利用が発覚した瞬間、何よりも優先すべき行動：</p>
+                    <p style="text-align: center; margin: 20px 0; line-height: 1.6;">
                         <span class="highlight-red">【60日以内にカード会社へ即連絡すること】</span>
                     </p>
-                    <p style="font-size: 17px; margin: 10px 0 0 0; color: #555;">
+                    <p style="font-size: 17px; margin: 15px 0 0 0; color: #555; line-height: 1.7;">
                         ※期限を過ぎると、どんな被害でも自己負担になってしまいます。また、ランダム生成など本人に重大な過失がなく、カード会社で不正利用と認定された場合は、補償対象となることが一般的です。裏面のサイン漏れや暗証番号の推測されやすさがあると対象外になることがあります。
                     </p>
                 </div>
@@ -425,11 +428,11 @@
                 
                 <div class="zero-rule-box">
                     <span class="rule-title">🛡️ 防御力を100倍にする運用ルール</span>
-                    <p style="margin: 0; text-align: center;">普段使わないときは利用上限を「0円（鍵）」に設定。</p>
-                    <p style="margin: 15px 0; text-align: center;">
+                    <p style="margin: 0 0 10px 0; text-align: center;">普段使わないときは利用上限を「0円（鍵）」に設定。</p>
+                    <p style="text-align: center; margin: 20px 0; line-height: 1.6;">
                         <span class="highlight-blue">「使うときだけ上限を上げて、すぐ0円に戻す」</span>
                     </p>
-                    <p style="margin: 0; font-size: 17px; color: #444;">
+                    <p style="margin: 15px 0 0 0; font-size: 17px; color: #444; line-height: 1.7;">
                         これを徹底すれば、万が一番号が漏れて犯人が少額テスト決済を試みても、カード会社側が「上限オーバー」として自動で100%シャットアウトしてくれます。
                     </p>
                 </div>
@@ -442,7 +445,7 @@
 
                 <div class="sub-title">バーチャルカードはどこの会社でもやってる？</div>
                 <p class="large-text">
-                    残念ながらどこの会社でもやっているわけではありません。三井住友カードやライフカード、エポスカード、楽天カード（バーチャルプリペイド）などの大手クレジット会社や、ネット銀行（PayPay銀行、住信SBIネット銀行など）、スマホ決済アプリ（メルペイ、Kyashなど）で広く提供されています。お持ちのカードが未対応の場合は、対応しているネット銀行などをサブ口座として無料開設するのがおすすめです。
+                    残念ながらどこの会社でもやっているわけではありません。三井住友カードやライフカード、エポスカード、楽天カード（バーチャルプリペイド）などの大手クレジット会社や, ネット銀行（PayPay銀行、住信SBIネット銀行など）、スマホ決済アプリ（メルペイ、Kyashなど）で広く提供されています。お持ちのカードが未対応の場合は、対応しているネット銀行などをサブ口座として無料開設するのがおすすめです。
                 </p>
 
                 <div class="sub-title">バーチャルカードを不正利用された場合の補償は？</div>
