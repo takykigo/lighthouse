@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健康体操2026 取扱説明書 改訂版</title>
+    <style>
+        /* 全体スタイリング：スマホでの見やすさと印象の良さを最優先 */
+        :root {
+            --primary-color: #2e7d32; /* 健康的で爽やかなグリーン */
+            --secondary-color: #f1f8e9;
+            --text-color: #2c3e50;
+            --bg-color: #f7f9f6;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 25px 15px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* ヘッダー：スマホでも目立つ大きな文字 */
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+            padding: 30px 15px;
+            background: linear-gradient(135deg, #81c784, #2e7d32);
+            border-radius: 16px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.15);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        /* セクションタイトル */
+        section {
+            margin-bottom: 45px;
+        }
+
+        section h2 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-left: 6px solid var(--primary-color);
+            padding-left: 12px;
+        }
+
+        /* インフォグラフィック風ページ要約カード */
+        .summary-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border: 1px solid #e3e8e3;
+        }
+
+        .page-badge {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .summary-card h3 {
+            font-size: 1.45rem;
+            margin-bottom: 12px;
+            color: #1b5e20;
+        }
+
+        .summary-card p {
+            font-size: 1.2rem; /* スマホでも読みやすい大きめサイズ */
+            color: #37474f;
+        }
+
+        .summary-list {
+            margin-top: 12px;
+            padding-left: 20px;
+        }
+
+        .summary-list li {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #37474f;
+        }
+
+        /* スライドショー（補足資料） */
+        .slider-section {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border: 1px solid #e3e8e3;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            background-color: #f0f0f0;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .slide-item {
+            display: none;
+            width: 100%;
+            cursor: pointer; /* クリック可能であることを示す */
+        }
+
+        .slide-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* 前後ボタン：スマホでもタップしやすい大きさ */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.85);
+            color: #2e7d32;
+            border: 1px solid #ccdccb;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.6rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .slider-btn:active {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        .btn-prev { left: 10px; }
+        .btn-next { right: 10px; }
+
+        /* ページインジケーター */
+        .slider-counter {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .slider-dots {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            background-color: #ccc;
+            border-radius: 50%;
+            transition: background-color 0.3s, width 0.3s;
+        }
+
+        .dot.active {
+            background-color: var(--primary-color);
+            width: 22px;
+            border-radius: 50px;
+        }
+
+        /* フッター */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            font-size: 1.05rem;
+            color: #777;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 50px;
+        }
+
+        /* 画面が広いPC向けの微調整 */
+        @media (min-width: 600px) {
+            body { padding: 40px 20px; }
+            header h1 { font-size: 2.6rem; }
+            .summary-card h3 { font-size: 1.6rem; }
+            .summary-card p, .summary-list li { font-size: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>健康体操2026</h1>
+        <p>取扱説明書 改訂版 (品番: TK-155)</p>
+    </header>
+
+    <section class="slider-section">
+        <h2>添付補足資料（NT1〜NT9）</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 15px; color: #555;">💡 画像をタップ（クリック）するか、左右の矢印でページを進めたり戻したりできます。</p>
+        
+        <div class="slider-wrapper">
+            <button class="slider-btn btn-prev" onclick="changeSlide(-1); event.stopPropagation();">&#10094;</button>
+            
+            <div class="slide-item" onclick="changeSlide(1)"><img src="NT1.png" alt="補足資料 NT1"></div>
+            <div class="slide-item" onclick="changeSlide(1)"><img src="NT2.jpg" alt="補足資料 NT2"></div>
+            <div class="slide-item" onclick="changeSlide(1)"><img src="NT3.jpg" alt="補足資料 NT3"></div>
+            <div class="slide-item" onclick="changeSlide(1)"><img src="NT4.jpg" alt="補足資料 NT4"></div>
+            <div class="slide-item" onclick="changeSlide(1)"><img src="NT5.jpg" alt="補足資料 NT5"></div>
+            <div class="slide-item" onclick="changeSlide(1)"><img src="NT6.jpg" alt="補足資料 NT6"></div>
+            <div class="slide-item" onclick="changeSlide(1)"><img src="NT7.jpg" alt="補足資料 NT7"></div>
+            <div class="slide-item" onclick="changeSlide(1)"><img src="NT8.jpg" alt="補足資料 NT8"></div>
+            <div class="slide-item" onclick="changeSlide(1)"><img src="NT9.jpg" alt="補足資料 NT9"></div>
+
+            <button class="slider-btn btn-next" onclick="changeSlide(1); event.stopPropagation();">&#10095;</button>
+        </div>
+
+        <div class="slider-counter" id="sliderCounter">1 / 9</div>
+        <div class="slider-dots" id="sliderDots"></div>
+    </section>
+
+    <section>
+        <h2>取扱説明書 ページ別要約</h2>
+
+        <div class="summary-card">
+            <span class="page-badge">Page 1</span>
+            <h3>表紙・基本情報</h3>
+            <p><strong>健康体操2026 取扱説明書 改訂版</strong><br>品番：TK-155（保管用）。2026年5月21日放送の「あしたが変わる。トリセツショー（リセッパー）」で紹介された内容を収録。「あしたが変わる。」をテーマに、いつでも見られる場所に大切に保管するための基本冊子です。</p>
+        </div>
+
+        <div class="summary-card">
+            <span class="page-badge">Page 2</span>
+            <h3>プロ3,000人がおすすめする健康体操</h3>
+            <p>元気に動ける体を一生保つための体操をランキング形式で紹介。理学療法士、柔道整復師、健康運動指導士、トレーナー、スポーツ医学の専門家など、現場で効果を実感しているプロ3,000人へのアンケートを基にした「プロお墨付き」の2026年最新体操プログラムです。</p>
+        </div>
+
+        <div class="summary-card">
+            <span class="page-badge">Page 7</span>
+            <h3>第2位：カーフレイズ（ふくらはぎの運動）</h3>
+            <p>転倒防止のため、必ず安定したイスの背や壁に手を添えて行います。</p>
+            <ul class="summary-list">
+                <li><strong>正しいフォーム:</strong> 両足を肩幅に開き、つま先を前に向け、まっすぐ上に引っ張られるようにゆっくりかかとを上げ下げします（3秒ずつかける）。</li>
+                <li><strong>回数の目安:</strong> 10回を1セットとして、体力に合わせて調整。</li>
+                <li><strong>負荷の調整:</strong> 【弱】かかとを上げる高さを低くする / 【強】階段などの段差を利用してかかとを低く下げる。</li>
+                <li><strong>アレンジ:</strong> ヒラメ筋を集中的に鍛える場合は、イスに座って手でひざを上から押しながら行います。</li>
+            </ul>
+        </div>
+
+        <div class="summary-card">
+            <span class="page-badge">Page 8</span>
+            <h3>第1位：スクワット（下半身の王様）</h3>
+            <p>効率よく一生動ける体をつくるための最重要体操です。</p>
+            <ul class="summary-list">
+                <li><strong>正しいフォーム:</strong> 足を肩幅より少し広く開き、つま先を前に向けます。バランスを取りやすいよう両腕を前に伸ばし、体幹に軽く力を入れて背筋を伸ばしたまま、骨盤を前傾させながらゆっくりと腰を下ろし、ゆっくり立ち上がります。</li>
+                <li><strong>回数の目安:</strong> 10回を1セット。</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2026 takykigo / lighthouse. All Rights Reserved.</p>
+    </footer>
+
+</div>
+
+<script>
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.slide-item');
+    const dotsContainer = document.getElementById('sliderDots');
+    const counterContainer = document.getElementById('sliderCounter');
+
+    // ドット（インジケーター）を自動生成
+    slides.forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+            showSlide(index);
+        });
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlide(index) {
+        if (index >= slides.length) {
+            currentSlideIndex = 0;
+        } else if (index < 0) {
+            currentSlideIndex = slides.length - 1;
+        } else {
+            currentSlideIndex = index;
+        }
+
+        // 全てのスライドとドットをリセット
+        slides.forEach(slide => slide.style.display = 'none');
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        // 現在のスライドとドットをアクティブにする
+        slides[currentSlideIndex].style.display = 'block';
+        dots[currentSlideIndex].classList.add('active');
+        
+        // ページ番号表示（例: 1 / 9）の更新
+        counterContainer.textContent = `${currentSlideIndex + 1} / ${slides.length}`;
+    }
+
+    function changeSlide(step) {
+        showSlide(currentSlideIndex + step);
+    }
+
+    // 最初のスライドを表示
+    showSlide(currentSlideIndex);
+</script>
+
+</body>
+</html>
