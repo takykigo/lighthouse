@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>健康体操2026 取扱説明書 改訂版</title>
     <style>
-        /* 全体スタイリング：スマホでの見やすさと印象の良さを最優先 */
+        /* 全体スタイリング：スマホでの見やすさと親しみやすさを最優先 */
         :root {
-            --primary-color: #2e7d32; /* 健康的で爽やかなグリーン */
-            --secondary-color: #f1f8e9;
+            --primary-color: #2e7d32; /* 元気が出るアクティブグリーン */
+            --secondary-color: #e8f5e9;
             --text-color: #2c3e50;
-            --bg-color: #f7f9f6;
+            --bg-color: #f4f7f4;
             --card-bg: #ffffff;
         }
 
@@ -33,91 +33,48 @@
             margin: 0 auto;
         }
 
-        /* ヘッダー：スマホでも目立つ大きな文字 */
+        /* ヘッダー：スマホでもパッと目立つ大文字デザイン */
         header {
             text-align: center;
             margin-bottom: 35px;
-            padding: 30px 15px;
+            padding: 35px 15px;
             background: linear-gradient(135deg, #81c784, #2e7d32);
-            border-radius: 16px;
+            border-radius: 20px;
             color: white;
-            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.15);
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.15);
         }
 
         header h1 {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             margin-bottom: 8px;
             font-weight: bold;
             letter-spacing: 0.05em;
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             opacity: 0.95;
         }
 
-        /* セクションタイトル */
+        /* セクション共通 */
         section {
             margin-bottom: 45px;
         }
 
         section h2 {
-            font-size: 1.6rem;
+            font-size: 1.65rem;
             color: var(--primary-color);
             margin-bottom: 20px;
             border-left: 6px solid var(--primary-color);
             padding-left: 12px;
         }
 
-        /* インフォグラフィック風ページ要約カード */
-        .summary-card {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-            border: 1px solid #e3e8e3;
-        }
-
-        .page-badge {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-size: 1.05rem;
-            font-weight: bold;
-            margin-bottom: 12px;
-        }
-
-        .summary-card h3 {
-            font-size: 1.45rem;
-            margin-bottom: 12px;
-            color: #1b5e20;
-        }
-
-        .summary-card p {
-            font-size: 1.2rem; /* スマホでも読みやすい大きめサイズ */
-            color: #37474f;
-        }
-
-        .summary-list {
-            margin-top: 12px;
-            padding-left: 20px;
-        }
-
-        .summary-list li {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #37474f;
-        }
-
-        /* スライドショー（補足資料） */
+        /* 補足資料ギャラリー（スライドショー） */
         .slider-section {
             background: #ffffff;
             padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             border: 1px solid #e3e8e3;
         }
 
@@ -132,25 +89,41 @@
             width: 100%;
         }
 
-        .slide-item {
-            display: none;
+        /* 画像エリアをタップ可能に */
+        .slide-area {
+            position: relative;
             width: 100%;
-            cursor: pointer; /* クリック可能であることを示す */
+            cursor: pointer;
+            display: none;
         }
 
-        .slide-item img {
+        .slide-area img {
             width: 100%;
             height: auto;
             display: block;
             object-fit: contain;
         }
 
-        /* 前後ボタン：スマホでもタップしやすい大きさ */
+        /* クリック領域を視覚的に分けるためのヒント表示 */
+        .click-hint {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 3px 10px;
+            font-size: 0.85rem;
+            border-radius: 20px;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        /* 左右ボタン：スマホでも誤操作しにくく押しやすいサイズ */
         .slider-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.85);
+            background-color: rgba(255, 255, 255, 0.9);
             color: #2e7d32;
             border: 1px solid #ccdccb;
             width: 50px;
@@ -163,24 +136,25 @@
             align-items: center;
             justify-content: center;
             z-index: 10;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             -webkit-tap-highlight-color: transparent;
         }
 
         .slider-btn:active {
-            background-color: rgba(255, 255, 255, 1);
+            background-color: #ffffff;
+            transform: translateY(-50%) scale(0.95);
         }
 
         .btn-prev { left: 10px; }
         .btn-next { right: 10px; }
 
-        /* ページインジケーター */
+        /* カウンター & ドット */
         .slider-counter {
             text-align: center;
-            margin-top: 10px;
-            font-size: 1.1rem;
+            margin-top: 15px;
+            font-size: 1.2rem;
             font-weight: bold;
-            color: #555;
+            color: #455a64;
         }
 
         .slider-dots {
@@ -192,33 +166,77 @@
             display: inline-block;
             width: 10px;
             height: 10px;
-            margin: 0 5px;
-            background-color: #ccc;
+            margin: 0 6px;
+            background-color: #cfd8dc;
             border-radius: 50%;
             transition: background-color 0.3s, width 0.3s;
+            cursor: pointer;
         }
 
         .dot.active {
             background-color: var(--primary-color);
-            width: 22px;
+            width: 24px;
             border-radius: 50px;
+        }
+
+        /* インフォグラフィック風 ページ要約カード */
+        .summary-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid #e3e8e3;
+        }
+
+        .page-badge {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 14px;
+        }
+
+        .summary-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #1b5e20;
+        }
+
+        .summary-card p {
+            font-size: 1.2rem; /* スマホで非常に読みやすい大文字 */
+            color: #37474f;
+        }
+
+        .summary-list {
+            margin-top: 12px;
+            padding-left: 20px;
+        }
+
+        .summary-list li {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #37474f;
         }
 
         /* フッター */
         footer {
             text-align: center;
-            padding: 30px 0;
-            font-size: 1.05rem;
-            color: #777;
+            padding: 35px 0;
+            font-size: 1.1rem;
+            color: #78909c;
             border-top: 1px solid #e0e0e0;
             margin-top: 50px;
         }
 
-        /* 画面が広いPC向けの微調整 */
+        /* PC（画面が広い端末）向けの微調整 */
         @media (min-width: 600px) {
             body { padding: 40px 20px; }
-            header h1 { font-size: 2.6rem; }
-            .summary-card h3 { font-size: 1.6rem; }
+            header h1 { font-size: 2.8rem; }
+            .summary-card h3 { font-size: 1.65rem; }
             .summary-card p, .summary-list li { font-size: 1.25rem; }
         }
     </style>
@@ -234,20 +252,47 @@
 
     <section class="slider-section">
         <h2>添付補足資料（NT1〜NT9）</h2>
-        <p style="font-size: 1.1rem; margin-bottom: 15px; color: #555;">💡 画像をタップ（クリック）するか、左右の矢印でページを進めたり戻したりできます。</p>
+        <p style="font-size: 1.1rem; margin-bottom: 15px; color: #555;">💡 画像をタップすると次のページに進みます。左側の矢印ボタンで戻ることもできます。</p>
         
         <div class="slider-wrapper">
             <button class="slider-btn btn-prev" onclick="changeSlide(-1); event.stopPropagation();">&#10094;</button>
             
-            <div class="slide-item" onclick="changeSlide(1)"><img src="NT1.png" alt="補足資料 NT1"></div>
-            <div class="slide-item" onclick="changeSlide(1)"><img src="NT2.jpg" alt="補足資料 NT2"></div>
-            <div class="slide-item" onclick="changeSlide(1)"><img src="NT3.jpg" alt="補足資料 NT3"></div>
-            <div class="slide-item" onclick="changeSlide(1)"><img src="NT4.jpg" alt="補足資料 NT4"></div>
-            <div class="slide-item" onclick="changeSlide(1)"><img src="NT5.jpg" alt="補足資料 NT5"></div>
-            <div class="slide-item" onclick="changeSlide(1)"><img src="NT6.jpg" alt="補足資料 NT6"></div>
-            <div class="slide-item" onclick="changeSlide(1)"><img src="NT7.jpg" alt="補足資料 NT7"></div>
-            <div class="slide-item" onclick="changeSlide(1)"><img src="NT8.jpg" alt="補足資料 NT8"></div>
-            <div class="slide-item" onclick="changeSlide(1)"><img src="NT9.jpg" alt="補足資料 NT9"></div>
+            <div class="slide-area" onclick="changeSlide(1)">
+                <img src="NT1.png" alt="補足資料 NT1">
+                <div class="click-hint">タップで進む ➔</div>
+            </div>
+            <div class="slide-area" onclick="changeSlide(1)">
+                <img src="NT2.png" alt="補足資料 NT2">
+                <div class="click-hint">タップで進む ➔</div>
+            </div>
+            <div class="slide-area" onclick="changeSlide(1)">
+                <img src="NT3.png" alt="補足資料 NT3">
+                <div class="click-hint">タップで進む ➔</div>
+            </div>
+            <div class="slide-area" onclick="changeSlide(1)">
+                <img src="NT4.png" alt="補足資料 NT4">
+                <div class="click-hint">タップで進む ➔</div>
+            </div>
+            <div class="slide-area" onclick="changeSlide(1)">
+                <img src="NT5.png" alt="補足資料 NT5">
+                <div class="click-hint">タップで進む ➔</div>
+            </div>
+            <div class="slide-area" onclick="changeSlide(1)">
+                <img src="NT6.png" alt="補足資料 NT6">
+                <div class="click-hint">タップで進む ➔</div>
+            </div>
+            <div class="slide-area" onclick="changeSlide(1)">
+                <img src="NT7.png" alt="補足資料 NT7">
+                <div class="click-hint">タップで進む ➔</div>
+            </div>
+            <div class="slide-area" onclick="changeSlide(1)">
+                <img src="NT8.png" alt="補足資料 NT8">
+                <div class="click-hint">タップで進む ➔</div>
+            </div>
+            <div class="slide-area" onclick="changeSlide(1)">
+                <img src="NT9.png" alt="補足資料 NT9">
+                <div class="click-hint">トップに戻る ↺</div>
+            </div>
 
             <button class="slider-btn btn-next" onclick="changeSlide(1); event.stopPropagation();">&#10095;</button>
         </div>
@@ -303,11 +348,11 @@
 
 <script>
     let currentSlideIndex = 0;
-    const slides = document.querySelectorAll('.slide-item');
+    const slides = document.querySelectorAll('.slide-area');
     const dotsContainer = document.getElementById('sliderDots');
     const counterContainer = document.getElementById('sliderCounter');
 
-    // ドット（インジケーター）を自動生成
+    // ドットを動的に生成
     slides.forEach((_, index) => {
         const dot = document.createElement('span');
         dot.classList.add('dot');
@@ -329,15 +374,15 @@
             currentSlideIndex = index;
         }
 
-        // 全てのスライドとドットをリセット
+        // 全表示をいったんリセット
         slides.forEach(slide => slide.style.display = 'none');
         dots.forEach(dot => dot.classList.remove('active'));
 
-        // 現在のスライドとドットをアクティブにする
+        // 現在のスライドとドットを有効化
         slides[currentSlideIndex].style.display = 'block';
         dots[currentSlideIndex].classList.add('active');
         
-        // ページ番号表示（例: 1 / 9）の更新
+        // カウンター表示の更新
         counterContainer.textContent = `${currentSlideIndex + 1} / ${slides.length}`;
     }
 
@@ -345,7 +390,7 @@
         showSlide(currentSlideIndex + step);
     }
 
-    // 最初のスライドを表示
+    // 初期化表示
     showSlide(currentSlideIndex);
 </script>
 
