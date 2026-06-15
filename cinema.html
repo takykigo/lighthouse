@@ -73,7 +73,7 @@
 
         .card.imax::before { background: var(--imax-color); }
         .card.atmos::before { background: var(--atmos-color); }
-        .card.4dx::before { background: var(--fdx-color); }
+        .card.fdx::before { background: var(--fdx-color); }
 
         .badge {
             display: inline-block;
@@ -87,7 +87,7 @@
 
         .imax .badge { background: rgba(0, 240, 255, 0.12); color: var(--imax-color); }
         .atmos .badge { background: rgba(0, 255, 135, 0.12); color: var(--atmos-color); }
-        .4dx .badge { background: rgba(255, 0, 85, 0.12); color: var(--fdx-color); }
+        .fdx .badge { background: rgba(255, 0, 85, 0.12); color: var(--fdx-color); }
 
         .card-title {
             font-size: 1.6rem;
@@ -142,12 +142,12 @@
             transition: width 1.2s cubic-bezier(0.1, 1, 0.1, 1);
         }
 
-        /* バーの発光エフェクト */
-        .imax .bar-fill { background: var(--imax-color); box-shadow: 0 0 8px var(--imax-color); }
-        .atmos .bar-fill { background: var(--atmos-color); box-shadow: 0 0 8px var(--atmos-color); }
-        .4dx .bar-fill { background: var(--fdx-color); box-shadow: 0 0 10px var(--fdx-color); }
+        /* 各バーのカラー（発光エフェクト付き） */
+        .imax-bar { background: var(--imax-color); box-shadow: 0 0 8px var(--imax-color); }
+        .atmos-bar { background: var(--atmos-color); box-shadow: 0 0 8px var(--atmos-color); }
+        .fdx-bar { background: var(--fdx-color); box-shadow: 0 0 10px var(--fdx-color); }
 
-        /* 特徴リスト（バグ対策・共通化） */
+        /* 特徴リスト */
         .features {
             list-style: none;
             padding: 0;
@@ -168,7 +168,6 @@
             margin-bottom: 0;
         }
 
-        /* 擬似要素で安全にチェックマークを生成 */
         .features li::before {
             content: "✓";
             margin-right: 8px;
@@ -178,9 +177,8 @@
 
         .imax .features li::before { color: var(--imax-color); }
         .atmos .features li::before { color: var(--atmos-color); }
-        .4dx .features li::before { color: var(--fdx-color); }
+        .fdx .features li::before { color: var(--fdx-color); }
 
-        /* 4DX専用ミニタグ */
         .fx-tag {
             font-size: 0.7rem;
             background: rgba(255, 255, 255, 0.08);
@@ -207,15 +205,15 @@
             <div class="stats">
                 <div class="stat-row">
                     <div class="stat-label"><span>映像の明るさ・コントラスト</span><span>100%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" data-percent="100%"></div></div>
+                    <div class="bar-bg"><div class="bar-fill imax-bar" data-percent="100%"></div></div>
                 </div>
                 <div class="stat-row">
                     <div class="stat-label"><span>音響の立体感</span><span>75%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" data-percent="75%"></div></div>
+                    <div class="bar-bg"><div class="bar-fill imax-bar" data-percent="75%"></div></div>
                 </div>
                 <div class="stat-row">
                     <div class="stat-label"><span>アトラクション性</span><span>10%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" data-percent="10%"></div></div>
+                    <div class="bar-bg"><div class="bar-fill imax-bar" data-percent="10%"></div></div>
                 </div>
             </div>
 
@@ -234,15 +232,15 @@
             <div class="stats">
                 <div class="stat-row">
                     <div class="stat-label"><span>映像の明るさ・コントラスト</span><span>50%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" data-percent="50%"></div></div>
+                    <div class="bar-bg"><div class="bar-fill atmos-bar" data-percent="50%"></div></div>
                 </div>
                 <div class="stat-row">
                     <div class="stat-label"><span>音響の立体感</span><span>100%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" data-percent="100%"></div></div>
+                    <div class="bar-bg"><div class="bar-fill atmos-bar" data-percent="100%"></div></div>
                 </div>
                 <div class="stat-row">
                     <div class="stat-label"><span>アトラクション性</span><span>10%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" data-percent="10%"></div></div>
+                    <div class="bar-bg"><div class="bar-fill atmos-bar" data-percent="10%"></div></div>
                 </div>
             </div>
 
@@ -253,7 +251,7 @@
             </ul>
         </div>
 
-        <div class="card 4dx">
+        <div class="card fdx">
             <span class="badge">EXPERIENCE & MOTION</span>
             <h2 class="card-title">4DX</h2>
             <p class="concept">座席が前後左右・上下に激しく可動し、環境エフェクトが吹き出す。映画を視覚・聴覚だけでなく「全身で体験するアトラクション」に変貌させるシステム。</p>
@@ -261,15 +259,15 @@
             <div class="stats">
                 <div class="stat-row">
                     <div class="stat-label"><span>映像の明るさ・コントラスト</span><span>50%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" data-percent="50%"></div></div>
+                    <div class="bar-bg"><div class="bar-fill fdx-bar" data-percent="50%"></div></div>
                 </div>
                 <div class="stat-row">
                     <div class="stat-label"><span>音響の立体感</span><span>50%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" data-percent="50%"></div></div>
+                    <div class="bar-bg"><div class="bar-fill fdx-bar" data-percent="50%"></div></div>
                 </div>
                 <div class="stat-row">
                     <div class="stat-label"><span>アトラクション性</span><span>100%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" data-percent="100%"></div></div>
+                    <div class="bar-bg"><div class="bar-fill fdx-bar" data-percent="100%"></div></div>
                 </div>
             </div>
 
@@ -285,14 +283,14 @@
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
-                const fills = document.querySelectorAll('.bar-fill');
-                fills.forEach(fill => {
-                    const targetPercent = fill.getAttribute('data-percent');
-                    if (targetPercent) {
-                        fill.style.width = targetPercent;
+                const elements = document.getElementsByClassName('bar-fill');
+                for (let i = 0; i < elements.length; i++) {
+                    const p = elements[i].getAttribute('data-percent');
+                    if (p) {
+                        elements[i].style.width = p;
                     }
-                });
-            }, 300);
+                }
+            }, 200);
         });
     </script>
 </body>
