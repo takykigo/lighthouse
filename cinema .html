@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スマホ最適化：映画システム比較</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #151f32;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --imax-color: #00f0ff;
+            --atmos-color: #00ff87;
+            --fdx-color: #ff0055;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin: 0 0 6px 0;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        p.subtitle {
+            color: var(--text-sub);
+            margin: 0 0 24px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            max-width: 480px; /* スマホ・ファブレットに最適な幅 */
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        /* 上部のカラーバーを少し太く */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+
+        .card.imax::before { background: var(--imax-color); }
+        .card.atmos::before { background: var(--atmos-color); }
+        .card.4dx::before { background: var(--fdx-color); }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .imax .badge { background: rgba(0, 240, 255, 0.12); color: var(--imax-color); }
+        .atmos .badge { background: rgba(0, 255, 135, 0.12); color: var(--atmos-color); }
+        .4dx .badge { background: rgba(255, 0, 85, 0.12); color: var(--fdx-color); }
+
+        .card-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin: 0 0 8px 0;
+            line-height: 1.2;
+        }
+
+        .concept {
+            font-size: 0.88rem;
+            color: var(--text-sub);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        /* 特徴グラフ（スマホ向けに見やすく太く調整） */
+        .stats {
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .stat-row {
+            margin-bottom: 10px;
+        }
+
+        .stat-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .bar-bg {
+            background: rgba(255,255,255,0.08);
+            height: 10px; /* バーを太くしてスマホでの視認性UP */
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 5px;
+        }
+
+        .imax .bar-fill { background: var(--imax-color); }
+        .atmos .bar-fill { background: var(--atmos-color); }
+        .4dx .bar-fill { background: var(--fdx-color); }
+
+        /* 特徴リスト */
+        .features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 14px;
+        }
+
+        .features li {
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.4;
+        }
+
+        .features li:last-child {
+            margin-bottom: 0;
+        }
+
+        .features li::before {
+            content: "✓";
+            margin-right: 8px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .imax .features li::before { color: var(--imax-color); }
+        .atmos .features li::before { color: var(--atmos-color); }
+        .4dx .features li::before { color: var(--fdx-color); }
+    </style>
+</head>
+<body>
+
+    <h1>THEATER SYSTEM</h1>
+    <p class="subtitle">IMAX / Atmos / 4DX の違い</p>
+
+    <div class="container">
+
+        <div class="card imax">
+            <span class="badge">VISUAL & SCALE</span>
+            <h2 class="card-title">IMAX</h2>
+            <p class="concept">圧倒的な大画面と高画質。映画の世界にすっぽりと包み込まれるような没入感が特徴。</p>
+            
+            <div class="stats">
+                <div class="stat-row">
+                    <div class="stat-label"><span>映像・スクリーンサイズ</span><span>100%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label"><span>音響の立体感</span><span>75%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 75%;"></div></div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label"><span>アトラクション性</span><span>10%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 10%;"></div></div>
+                </div>
+            </div>
+
+            <ul class="features">
+                <li>床から天井、左右いっぱいに広がる特大画面</li>
+                <li>独自のアスペクト比で通常より広い視界を確保</li>
+                <li>高輝度・高コントラストなデジタル投射システム</li>
+            </ul>
+        </div>
+
+        <div class="card atmos">
+            <span class="badge">SOUND & AUDIO</span>
+            <h2 class="card-title">Dolby Atmos</h2>
+            <p class="concept">天井を含めた全方位から音が降り注ぐ。音の「位置」や「移動」をリアルに再現する立体音響。</p>
+            
+            <div class="stats">
+                <div class="stat-row">
+                    <div class="stat-label"><span>映像・スクリーンサイズ</span><span>50%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 50%;"></div></div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label"><span>音響の立体感</span><span>100%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label"><span>アトラクション性</span><span>10%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 10%;"></div></div>
+                </div>
+            </div>
+
+            <ul class="features">
+                <li>「オブジェクトオーディオ」による3次元空間の音響</li>
+                <li>天井スピーカーを含む最大64個の独立した音響網</li>
+                <li>音が頭上を通り過ぎるような息をのむリアリティ</li>
+            </ul>
+        </div>
+
+        <div class="card 4dx">
+            <span class="badge">EXPERIENCE & MOTION</span>
+            <h2 class="card-title">4DX</h2>
+            <p class="concept">座席が動き、風や水が吹き出す。映画を観る場所から「体験するアトラクション」へ。</p>
+            
+            <div class="stats">
+                <div class="stat-row">
+                    <div class="stat-label"><span>映像・スクリーンサイズ</span><span>50%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 50%;"></div></div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label"><span>音響の立体感</span><span>50%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 50%;"></div></div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label"><span>アトラクション性</span><span>100%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 100%;"></div></div>
+                </div>
+            </div>
+
+            <ul class="features">
+                <li>前後・左右・上下に激しく動くモーションシート</li>
+                <li>水しぶき、風、香り、雪などの多彩な環境エフェクト</li>
+                <li>アクション映画やテーマパーク感覚を楽しみたい時に</li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+</html>
