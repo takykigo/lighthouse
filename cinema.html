@@ -60,7 +60,6 @@
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.03);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .card::before {
@@ -139,15 +138,16 @@
         .bar-fill {
             height: 100%;
             border-radius: 5px;
-            width: 0%; /* JSでアニメーション駆動 */
+            width: 0%;
             transition: width 1.2s cubic-bezier(0.1, 1, 0.1, 1);
         }
 
+        /* バーの発光エフェクト */
         .imax .bar-fill { background: var(--imax-color); box-shadow: 0 0 8px var(--imax-color); }
-        .atmos .bar-fill { background: var(--atmos-color); }
-        .4dx .bar-fill { background: var(--fdx-color); }
+        .atmos .bar-fill { background: var(--atmos-color); box-shadow: 0 0 8px var(--atmos-color); }
+        .4dx .bar-fill { background: var(--fdx-color); box-shadow: 0 0 10px var(--fdx-color); }
 
-        /* 特徴リスト */
+        /* 特徴リスト（バグ対策・共通化） */
         .features {
             list-style: none;
             padding: 0;
@@ -168,6 +168,7 @@
             margin-bottom: 0;
         }
 
+        /* 擬似要素で安全にチェックマークを生成 */
         .features li::before {
             content: "✓";
             margin-right: 8px;
@@ -178,6 +179,17 @@
         .imax .features li::before { color: var(--imax-color); }
         .atmos .features li::before { color: var(--atmos-color); }
         .4dx .features li::before { color: var(--fdx-color); }
+
+        /* 4DX専用ミニタグ */
+        .fx-tag {
+            font-size: 0.7rem;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 1px 6px;
+            border-radius: 4px;
+            margin-left: 6px;
+            color: #e2e8f0;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -262,9 +274,9 @@
             </div>
 
             <ul class="features">
-                <li>映像の衝撃や浮遊感と完璧に連動するモーションシート</li>
-                <li>水しぶき、風、香り、フラッシュ、雪などの多彩な実体エフェクト</li>
-                <li>アクション映画やファンタジー作品をテーマパーク感覚で楽しむ</li>
+                <li>映像の衝撃や浮遊感と完璧に連動するモーションシート<span class="fx-tag">3D駆動</span></li>
+                <li>水しぶき、風、香り、フラッシュ、雪などの多彩な実体エフェクト<span class="fx-tag">12種効果</span></li>
+                <li>アクション映画やファンタジー作品をテーマパーク感覚で楽しむ<span class="fx-tag">五感体験</span></li>
             </ul>
         </div>
 
@@ -275,7 +287,10 @@
             setTimeout(() => {
                 const fills = document.querySelectorAll('.bar-fill');
                 fills.forEach(fill => {
-                    fill.style.width = fill.getAttribute('data-percent');
+                    const targetPercent = fill.getAttribute('data-percent');
+                    if (targetPercent) {
+                        fill.style.width = targetPercent;
+                    }
                 });
             }, 300);
         });
