@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>シニアの歩行と健康ガイド</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -10,195 +10,219 @@
     background-color: #f1f5f9;
     font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Meiryo", sans-serif;
     color: #1e293b;
-    padding: 10px;
-    line-height: 1.6;
+    padding: 8px 8px 60px 8px; /* 下部に余裕を持たせて被りを防止 */
+    line-height: 1.5;
   }
   .container {
     width: 100%;
-    max-width: 600px;
+    max-width: 480px;
     margin: 0 auto;
     background: #ffffff;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-    border: 2px solid #cbd5e1;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border: 1px solid #cbd5e1;
   }
 
   /* ヘッダー */
   .header {
     background: #0284c7;
     color: #ffffff;
-    padding: 24px 16px;
+    padding: 20px 14px;
     text-align: center;
   }
   .badge {
     display: inline-block;
-    background: rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.22);
     color: #ffffff;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 800;
-    padding: 4px 14px;
+    padding: 3px 12px;
     border-radius: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
   .header h1 {
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 900;
     line-height: 1.35;
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+    word-break: keep-all;
   }
   .header p {
-    font-size: 16px;
+    font-size: 15px;
     opacity: 0.95;
     font-weight: bold;
   }
 
-  .content { padding: 18px 14px; }
+  .content { padding: 16px 12px; }
 
   /* ゲージセクション */
   .section-title {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 900;
     color: #0f172a;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
   .gauge-box {
     background: #f8fafc;
-    border: 2px solid #94a3b8;
+    border: 1.5px solid #cbd5e1;
     border-radius: 12px;
-    padding: 14px 12px;
-    margin-bottom: 24px;
+    padding: 12px 10px;
+    margin-bottom: 18px;
   }
   .gauge-bar-wrap {
     display: flex;
-    height: 22px;
-    border-radius: 11px;
+    height: 18px;
+    border-radius: 9px;
     overflow: hidden;
-    margin-bottom: 12px;
-    border: 1px solid #64748b;
+    margin-bottom: 8px;
   }
   .bar-gray { width: 30%; background: #94a3b8; }
   .bar-blue { width: 35%; background: #0284c7; }
   .bar-green { width: 35%; background: #10b981; }
 
   .gauge-points {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr 1.25fr;
     gap: 4px;
     text-align: center;
   }
-  .gauge-points div { flex: 1; font-size: 13px; font-weight: bold; color: #475569; }
-  .gauge-points strong { display: block; font-size: 16px; margin-bottom: 2px; }
+  .gauge-col {
+    font-size: 12px;
+    color: #475569;
+    font-weight: bold;
+    line-height: 1.35;
+  }
+  .gauge-col strong {
+    display: block;
+    font-size: 14px;
+    white-space: nowrap;
+  }
   .c-blue { color: #0284c7; }
   .c-green { color: #059669; }
 
   /* 見出しブロック */
   .sec-heading {
-    font-size: 19px;
+    font-size: 17px;
     font-weight: 900;
-    padding: 10px 14px;
+    padding: 8px 12px;
     border-radius: 8px;
-    margin: 22px 0 14px 0;
+    margin: 18px 0 10px 0;
     text-align: center;
+    line-height: 1.4;
+    word-break: keep-all;
   }
-  .head-blue { background: #e0f2fe; color: #0369a1; border-left: 8px solid #0284c7; }
-  .head-green { background: #d1fae5; color: #047857; border-left: 8px solid #10b981; }
+  .head-blue { background: #e0f2fe; color: #0369a1; border-left: 6px solid #0284c7; }
+  .head-green { background: #d1fae5; color: #047857; border-left: 6px solid #10b981; }
 
-  /* 疾患カード（スマホ用1列） */
+  /* 疾患カード */
   .disease-list {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 10px;
   }
   .card {
     background: #ffffff;
     border-radius: 12px;
-    padding: 16px 14px;
-    border: 2px solid #cbd5e1;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
     display: flex;
     align-items: flex-start;
-    gap: 14px;
+    gap: 10px;
   }
-  .card-blue { border-left: 8px solid #0284c7; background: #f0f9ff; }
-  .card-green { border-left: 8px solid #10b981; background: #f0fdf4; }
+  .card-blue { border-left: 6px solid #0284c7; background: #f0f9ff; }
+  .card-green { border-left: 6px solid #10b981; background: #f0fdf4; }
 
   .card-icon {
-    font-size: 34px;
+    font-size: 28px;
     line-height: 1;
     flex-shrink: 0;
     margin-top: 2px;
   }
+  .card-txt {
+    flex: 1;
+    min-width: 0;
+  }
   .card-txt h3 {
-    font-size: 19px;
+    font-size: 17px;
     font-weight: 900;
     color: #0f172a;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
+    word-break: keep-all;
   }
   .card-txt .highlight {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 800;
     color: #0284c7;
     display: block;
     margin-bottom: 4px;
+    word-break: keep-all;
   }
   .card-green .highlight { color: #047857; }
   .card-txt p {
-    font-size: 15px;
+    font-size: 14px;
     color: #334155;
-    line-height: 1.55;
+    line-height: 1.5;
+    text-align: justify;
   }
 
   /* 3つのコツ */
   .tips-box {
     background: #fffbeb;
-    border: 2px solid #f59e0b;
-    border-radius: 14px;
-    padding: 16px 14px;
-    margin-top: 26px;
+    border: 1.5px solid #f59e0b;
+    border-radius: 12px;
+    padding: 14px 12px;
+    margin-top: 20px;
   }
   .tips-title {
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 900;
     color: #92400e;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
   .tips-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
   }
   .tip-item {
     background: #ffffff;
-    border: 1.5px solid #fde68a;
-    border-radius: 10px;
-    padding: 14px;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: 10px 12px;
     display: flex;
-    gap: 12px;
+    gap: 10px;
     align-items: flex-start;
   }
   .tip-num {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
     background: #f59e0b;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 900;
     border-radius: 50%;
     text-align: center;
     flex-shrink: 0;
+    margin-top: 1px;
   }
-  .tip-item h4 { font-size: 17px; font-weight: 900; color: #1e293b; margin-bottom: 4px; }
-  .tip-item p { font-size: 14px; color: #475569; line-height: 1.5; }
+  .tip-item h4 { 
+    font-size: 15px; 
+    font-weight: 900; 
+    color: #1e293b; 
+    margin-bottom: 2px;
+    word-break: keep-all;
+  }
+  .tip-item p { font-size: 13px; color: #475569; line-height: 1.45; }
 
   .footer {
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     color: #475569;
-    padding: 16px 14px;
+    padding: 14px 12px;
     background: #f8fafc;
     border-top: 1px solid #cbd5e1;
     line-height: 1.5;
@@ -223,15 +247,15 @@
         <div class="bar-green"></div>
       </div>
       <div class="gauge-points">
-        <div>
-          〜4,000歩
-          <span>日常生活</span>
+        <div class="gauge-col">
+          <strong>〜4,000歩</strong>
+          日常生活
         </div>
-        <div>
+        <div class="gauge-col">
           <strong class="c-blue">5,000歩（約3km）</strong>
           <span class="c-blue">第1防衛ライン</span>
         </div>
-        <div>
+        <div class="gauge-col">
           <strong class="c-green">6〜7,000歩（約4km）</strong>
           <span class="c-green">★ 理想のゴール</span>
         </div>
@@ -245,7 +269,7 @@
         <div class="card-icon">🧠</div>
         <div class="card-txt">
           <h3>認知症の予防</h3>
-          <span class="highlight">脳血流UP・海馬の刺激</span>
+          <span class="highlight">脳血流UP・海馬を刺激</span>
           <p>足のリズミカルな振動で神経栄養因子が分泌。記憶を司る海馬の萎縮を防ぎます。</p>
         </div>
       </div>
@@ -274,7 +298,7 @@
         <div class="card-icon">🩸</div>
         <div class="card-txt">
           <h3>動脈硬化の予防</h3>
-          <span class="highlight">余分な糖と中性脂肪を燃焼</span>
+          <span class="highlight">余分な糖・中性脂肪を燃焼</span>
           <p>歩行で血中の糖・脂質を消費。血管の内壁を柔軟に保ち、血管の若返りを促します。</p>
         </div>
       </div>
@@ -291,7 +315,7 @@
         <div class="card-txt">
           <h3>各種がんの予防</h3>
           <span class="highlight">体温上昇・NK免疫細胞の活性化</span>
-          <p>免疫機能が高まり異常細胞の増殖を抑制（特に大腸がんや乳がん等の予防に高効果）。</p>
+          <p>免疫機能が高まり異常細胞の増殖を抑制（特に大腸がんや乳がんの予防に高い効果）。</p>
         </div>
       </div>
     </div>
@@ -304,21 +328,21 @@
           <div class="tip-num">1</div>
           <div>
             <h4>1日合算でOK！</h4>
-            <p>朝のゴミ出し・スーパーの買い物・散歩などを足した「1日の合計」で十分効果があります。</p>
+            <p>ゴミ出し・買い物・散歩などを足した「1日の合計」で十分効果があります。</p>
           </div>
         </div>
         <div class="tip-item">
           <div class="tip-num">2</div>
           <div>
             <h4>時々「速歩き」を混ぜる</h4>
-            <p>だらだら歩くより「少し息が弾む速歩き」を合計15分ほど挟むと効果が跳ね上がります。</p>
+            <p>「少し息が弾む速歩き」を合計15分ほど挟むと効果が跳ね上がります。</p>
           </div>
         </div>
         <div class="tip-item">
           <div class="tip-num">3</div>
           <div>
             <h4>スマホをポケットへ</h4>
-            <p>ポケットに入れて持ち歩くだけ。夜に数字を見るだけで習慣化と励みにつながります。</p>
+            <p>持ち歩くだけで自動記録。夜に数字を見るだけで習慣化と励みになります。</p>
           </div>
         </div>
       </div>
