@@ -2,100 +2,81 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>歩行と健康ガイド ポスター</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+<title>シニアの歩行と健康ガイド</title>
 <style>
-  @page {
-    size: A4 portrait;
-    margin: 8mm;
-  }
-  * { 
-    box-sizing: border-box; 
-    margin: 0; 
-    padding: 0; 
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     background-color: #f1f5f9;
-    font-family: "Hiragino Sans", "Meiryo", "BIZ UDPGothic", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Meiryo", sans-serif;
     color: #1e293b;
-    display: flex;
-    justify-content: center;
     padding: 10px;
+    line-height: 1.6;
   }
-  /* A4ポスターの用紙枠 */
-  .a4-sheet {
-    width: 210mm;
-    min-height: 290mm;
-    max-height: 292mm;
+  .container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     background: #ffffff;
-    border: 3px solid #0284c7;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
+    border-radius: 16px;
     overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    border: 2px solid #cbd5e1;
   }
 
   /* ヘッダー */
   .header {
     background: #0284c7;
     color: #ffffff;
-    padding: 14px 20px;
+    padding: 24px 16px;
     text-align: center;
-    border-bottom: 4px solid #0369a1;
   }
   .badge {
     display: inline-block;
-    background: #ffffff;
-    color: #0284c7;
-    font-size: 13px;
-    font-weight: 900;
-    padding: 2px 14px;
+    background: rgba(255,255,255,0.25);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+    padding: 4px 14px;
     border-radius: 20px;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
   }
   .header h1 {
     font-size: 26px;
     font-weight: 900;
-    line-height: 1.3;
-    letter-spacing: 1px;
-    margin-bottom: 4px;
+    line-height: 1.35;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
   }
   .header p {
-    font-size: 14px;
-    color: #e0f2fe;
+    font-size: 16px;
+    opacity: 0.95;
     font-weight: bold;
   }
 
-  .main-content {
-    flex: 1;
-    padding: 14px 18px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+  .content { padding: 18px 14px; }
 
   /* ゲージセクション */
-  .gauge-box {
-    background: #f8fafc;
-    border: 2px solid #cbd5e1;
-    border-radius: 10px;
-    padding: 10px 14px;
-    margin-bottom: 12px;
-  }
-  .gauge-title {
-    font-size: 15px;
+  .section-title {
+    font-size: 20px;
     font-weight: 900;
     color: #0f172a;
-    margin-bottom: 6px;
+    margin-bottom: 12px;
+  }
+  .gauge-box {
+    background: #f8fafc;
+    border: 2px solid #94a3b8;
+    border-radius: 12px;
+    padding: 14px 12px;
+    margin-bottom: 24px;
   }
   .gauge-bar-wrap {
     display: flex;
-    height: 20px;
-    border-radius: 10px;
+    height: 22px;
+    border-radius: 11px;
     overflow: hidden;
+    margin-bottom: 12px;
     border: 1px solid #64748b;
-    margin-bottom: 6px;
   }
   .bar-gray { width: 30%; background: #94a3b8; }
   .bar-blue { width: 35%; background: #0284c7; }
@@ -104,157 +85,168 @@
   .gauge-points {
     display: flex;
     justify-content: space-between;
-    font-size: 13px;
-    font-weight: 800;
+    gap: 4px;
     text-align: center;
   }
-  .gauge-points div { flex: 1; }
+  .gauge-points div { flex: 1; font-size: 13px; font-weight: bold; color: #475569; }
+  .gauge-points strong { display: block; font-size: 16px; margin-bottom: 2px; }
   .c-blue { color: #0284c7; }
   .c-green { color: #059669; }
 
-  /* 疾患セクション（2列グリッドでA4全体に広げる） */
+  /* 見出しブロック */
   .sec-heading {
-    font-size: 16px;
+    font-size: 19px;
     font-weight: 900;
-    padding: 6px 12px;
-    border-radius: 6px;
-    margin: 8px 0;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin: 22px 0 14px 0;
+    text-align: center;
+  }
+  .head-blue { background: #e0f2fe; color: #0369a1; border-left: 8px solid #0284c7; }
+  .head-green { background: #d1fae5; color: #047857; border-left: 8px solid #10b981; }
+
+  /* 疾患カード（スマホ用1列） */
+  .disease-list {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    flex-direction: column;
+    gap: 14px;
   }
-  .head-blue { background: #e0f2fe; color: #0369a1; border-left: 6px solid #0284c7; }
-  .head-green { background: #d1fae5; color: #047857; border-left: 6px solid #10b981; }
-
-  .grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 8px;
-  }
-
   .card {
     background: #ffffff;
-    border: 1.5px solid #cbd5e1;
-    border-radius: 8px;
-    padding: 10px 12px;
+    border-radius: 12px;
+    padding: 16px 14px;
+    border: 2px solid #cbd5e1;
     display: flex;
-    gap: 10px;
     align-items: flex-start;
+    gap: 14px;
   }
-  .card-blue { border-left: 6px solid #0284c7; background: #f0f9ff; }
-  .card-green { border-left: 6px solid #10b981; background: #f0fdf4; }
+  .card-blue { border-left: 8px solid #0284c7; background: #f0f9ff; }
+  .card-green { border-left: 8px solid #10b981; background: #f0fdf4; }
 
   .card-icon {
-    font-size: 28px;
+    font-size: 34px;
     line-height: 1;
     flex-shrink: 0;
     margin-top: 2px;
   }
   .card-txt h3 {
-    font-size: 15px;
+    font-size: 19px;
     font-weight: 900;
     color: #0f172a;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
   }
   .card-txt .highlight {
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 800;
     color: #0284c7;
     display: block;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
   }
   .card-green .highlight { color: #047857; }
   .card-txt p {
-    font-size: 12px;
+    font-size: 15px;
     color: #334155;
-    line-height: 1.4;
+    line-height: 1.55;
   }
 
-  /* 3つのコツ（横3分割） */
+  /* 3つのコツ */
   .tips-box {
     background: #fffbeb;
     border: 2px solid #f59e0b;
-    border-radius: 10px;
-    padding: 10px 12px;
-    margin-top: 6px;
+    border-radius: 14px;
+    padding: 16px 14px;
+    margin-top: 26px;
   }
   .tips-title {
     text-align: center;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 900;
     color: #92400e;
-    margin-bottom: 8px;
+    margin-bottom: 14px;
   }
-  .tips-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
+  .tips-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
   .tip-item {
     background: #ffffff;
-    border: 1px solid #fde68a;
-    border-radius: 6px;
-    padding: 8px 10px;
+    border: 1.5px solid #fde68a;
+    border-radius: 10px;
+    padding: 14px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
   }
   .tip-num {
-    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
     background: #f59e0b;
     color: #ffffff;
-    font-size: 11px;
+    font-size: 16px;
     font-weight: 900;
-    padding: 1px 7px;
-    border-radius: 4px;
-    margin-bottom: 4px;
+    border-radius: 50%;
+    text-align: center;
+    flex-shrink: 0;
   }
-  .tip-item h4 { font-size: 13px; font-weight: 800; color: #1e293b; margin-bottom: 2px; }
-  .tip-item p { font-size: 11px; color: #475569; line-height: 1.35; }
+  .tip-item h4 { font-size: 17px; font-weight: 900; color: #1e293b; margin-bottom: 4px; }
+  .tip-item p { font-size: 14px; color: #475569; line-height: 1.5; }
 
   .footer {
     text-align: center;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: bold;
-    color: #64748b;
-    padding: 8px;
+    color: #475569;
+    padding: 16px 14px;
     background: #f8fafc;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid #cbd5e1;
+    line-height: 1.5;
   }
 </style>
 </head>
 <body>
 
-<div class="a4-sheet">
+<div class="container">
   <div class="header">
     <div class="badge">科学的データ（厚労省・中之条研究）</div>
-    <h1>シニアの歩行と健康 疾患予防ガイド</h1>
-    <p>歩行距離・歩数によって「どの病気を防げるか」が一目でわかるポスター</p>
+    <h1>シニアの歩行と健康<br>疾患予防ガイド</h1>
+    <p>歩く歩数・距離で「防げる病気」がわかる！</p>
   </div>
 
-  <div class="main-content">
-    <!-- 目標ゲージ -->
+  <div class="content">
+    <div class="section-title">📊 1日の目標歩数と予防ライン</div>
     <div class="gauge-box">
-      <div class="gauge-title">📊 1日の目標歩数と予防防衛ライン</div>
       <div class="gauge-bar-wrap">
         <div class="bar-gray"></div>
         <div class="bar-blue"></div>
         <div class="bar-green"></div>
       </div>
       <div class="gauge-points">
-        <div>〜4,000歩<br><span style="color:#64748b; font-size:11px;">日常生活レベル</span></div>
-        <div><strong class="c-blue">5,000歩（約3km）</strong><br><span class="c-blue" style="font-size:11px;">第1防衛ライン</span></div>
-        <div><strong class="c-green">6,000〜7,000歩（約4km）</strong><br><span class="c-green" style="font-size:11px;">★ 理想の健康ゴール</span></div>
+        <div>
+          〜4,000歩
+          <span>日常生活</span>
+        </div>
+        <div>
+          <strong class="c-blue">5,000歩（約3km）</strong>
+          <span class="c-blue">第1防衛ライン</span>
+        </div>
+        <div>
+          <strong class="c-green">6〜7,000歩（約4km）</strong>
+          <span class="c-green">★ 理想のゴール</span>
+        </div>
       </div>
     </div>
 
-    <!-- 5000歩 -->
+    <!-- 5000歩グループ -->
     <div class="sec-heading head-blue">🛡️ 5,000歩（約3km）で防ぐ重要疾患</div>
-    <div class="grid-2">
+    <div class="disease-list">
       <div class="card card-blue">
         <div class="card-icon">🧠</div>
         <div class="card-txt">
           <h3>認知症の予防</h3>
           <span class="highlight">脳血流UP・海馬の刺激</span>
-          <p>足のリズミカルな振動で神経栄養因子が分泌。記憶力を司る海馬の萎縮を防ぎます。</p>
+          <p>足のリズミカルな振動で神経栄養因子が分泌。記憶を司る海馬の萎縮を防ぎます。</p>
         </div>
       </div>
       <div class="card card-blue">
@@ -262,20 +254,20 @@
         <div class="card-txt">
           <h3>心疾患・脳卒中の予防</h3>
           <span class="highlight">血管拡張・血圧の降下</span>
-          <p>全身の毛細血管が広がり血圧が安定。善玉コレステロールが増え、血管の詰まり（血栓）を予防。</p>
+          <p>全身の毛細血管が広がり血圧が安定。善玉コレステロールが増加し血栓を防ぎます。</p>
         </div>
       </div>
     </div>
 
-    <!-- 7000歩 -->
-    <div class="sec-heading head-green">🏆 6,000〜7,000歩（約3.6〜4.9km）で完全防御</div>
-    <div class="grid-2">
+    <!-- 7000歩グループ -->
+    <div class="sec-heading head-green">🏆 6,000〜7,000歩（約4km）で完全防御</div>
+    <div class="disease-list">
       <div class="card card-green">
         <div class="card-icon">🦵</div>
         <div class="card-txt">
-          <h3>フレイル（虚弱）予防</h3>
+          <h3>フレイル（虚弱・寝たきり）予防</h3>
           <span class="highlight">太もも・下半身の筋力維持</span>
-          <p>足腰の筋肉と関節を維持。転倒や骨折、寝たきり状態（要介護）を防ぎ自立生活を守ります。</p>
+          <p>下半身の筋肉と関節を維持。転倒・骨折や要介護状態への移行をしっかり防ぎます。</p>
         </div>
       </div>
       <div class="card card-green">
@@ -283,7 +275,7 @@
         <div class="card-txt">
           <h3>動脈硬化の予防</h3>
           <span class="highlight">余分な糖と中性脂肪を燃焼</span>
-          <p>歩行で血液中の糖や脂質を消費。血管壁の内皮機能を柔軟に保ち血管の老化を防ぎます。</p>
+          <p>歩行で血中の糖・脂質を消費。血管の内壁を柔軟に保ち、血管の若返りを促します。</p>
         </div>
       </div>
       <div class="card card-green">
@@ -291,7 +283,7 @@
         <div class="card-txt">
           <h3>骨粗しょう症の予防</h3>
           <span class="highlight">かかと着地衝撃・骨密度UP</span>
-          <p>着地衝撃が骨芽細胞を刺激しカルシウムが定着。日光浴でビタミンDも生成されます。</p>
+          <p>着地衝撃が骨を刺激しカルシウムが定着。日光浴で骨を作るビタミンDも生成されます。</p>
         </div>
       </div>
       <div class="card card-green">
@@ -299,29 +291,35 @@
         <div class="card-txt">
           <h3>各種がんの予防</h3>
           <span class="highlight">体温上昇・NK免疫細胞の活性化</span>
-          <p>免疫細胞の活性化により異常細胞の増殖を抑制（大腸がんや乳がん等の予防に高効果）。</p>
+          <p>免疫機能が高まり異常細胞の増殖を抑制（特に大腸がんや乳がん等の予防に高効果）。</p>
         </div>
       </div>
     </div>
 
-    <!-- 3つのコツ -->
+    <!-- 3大ルール -->
     <div class="tips-box">
       <div class="tips-title">💡 無理なく続けるための「3大ルール」</div>
-      <div class="tips-grid">
+      <div class="tips-list">
         <div class="tip-item">
-          <span class="tip-num">1</span>
-          <h4>1日合算でOK</h4>
-          <p>ゴミ出し・スーパーの買い物・散歩などを足した「1日の合計」で十分効果あり。</p>
+          <div class="tip-num">1</div>
+          <div>
+            <h4>1日合算でOK！</h4>
+            <p>朝のゴミ出し・スーパーの買い物・散歩などを足した「1日の合計」で十分効果があります。</p>
+          </div>
         </div>
         <div class="tip-item">
-          <span class="tip-num">2</span>
-          <h4>速歩きを混ぜる</h4>
-          <p>だらだら歩くより「少し息が弾む速歩き」を合計15分挟むと効果が倍増。</p>
+          <div class="tip-num">2</div>
+          <div>
+            <h4>時々「速歩き」を混ぜる</h4>
+            <p>だらだら歩くより「少し息が弾む速歩き」を合計15分ほど挟むと効果が跳ね上がります。</p>
+          </div>
         </div>
         <div class="tip-item">
-          <span class="tip-num">3</span>
-          <h4>スマホ計測を活用</h4>
-          <p>ポケットに入れて持ち歩くだけ。夜に歩数を確認するだけで習慣化します。</p>
+          <div class="tip-num">3</div>
+          <div>
+            <h4>スマホをポケットへ</h4>
+            <p>ポケットに入れて持ち歩くだけ。夜に数字を見るだけで習慣化と励みにつながります。</p>
+          </div>
         </div>
       </div>
     </div>
